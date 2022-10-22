@@ -1,0 +1,69 @@
+#light .bgNav{
+    background-color: #F5F8FB;
+}
+#dark .bgNav{
+    background-color: #0B1221;
+}
+
+#light .bgBodyPrimary{
+    background-color: #ffffff;
+}
+#dark .bgBodyPrimary{
+    background-color: #0E1629;
+}
+
+#light .bgBodySecondary{
+    background-color: #FCF9FE;
+}
+#dark .bgBodySecondary{
+    background-color: #0F172A;
+}
+
+#light .cardBgPrimary{
+    background-color: #F8FAFC;
+}
+#dark .cardBgPrimary{
+    background-color: #182233;
+}
+
+#light .cardBgSecondary{
+    background-color: #ffffff;
+}
+#dark .cardBgSecondary{
+    background-color: #0F172A;
+}
+
+#light .borderColor{
+    border: 1px solid rgba(71,85,105,.1);
+}
+#dark .borderColor{
+    border: 1px solid rgba(248,250,252,.08);
+}
+
+#light .textHeading{
+    color: #0F172A;
+}
+#dark .textHeading{
+    color: #E2E8F0;
+}
+
+#light .textParagraph{
+    color: #465365;
+}
+#dark .textParagraph{
+    color: #8896AB;
+}
+
+#light .textHeadingStyle{
+    color: #6D28D9;
+}
+#dark .textHeadingStyle{
+    color: #38BDF8;
+}
+
+#light .btnBg{
+    background-color: #0F172A;
+}
+#dark .btnBg{
+    background-color: #0284C7;
+}

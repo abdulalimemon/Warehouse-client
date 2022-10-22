@@ -1,13 +1,21 @@
+import { createContext, useState } from 'react';
 import './App.css';
-import Navbar from './pages/Shared/Navbar';
-import Footer from './pages/Shared/Footer';
+import Home from './pages/Home/Home';
+
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState('light');
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <>
-      <Navbar></Navbar>
-      <Footer></Footer>
-    </>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className='app' id={theme}>
+        <Home></Home>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
