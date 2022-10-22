@@ -16,7 +16,7 @@ const PageRoutes = () => {
                 {/* <Route path='/' element={}></Route> */}
                 <Route path='/dashboard' element={<DashBoard></DashBoard>}></Route>
                 <Route path='/login' element={<Login></Login>}></Route>
-                <Route path='/register' element={<Registration></Registration>}></Route>
+                <Route path='/registration' element={<Registration></Registration>}></Route>
                 <Route path='/blog' element={<Blog></Blog>}></Route>
                 <Route path='*' element={<NotFound></NotFound>}></Route>
             </Routes>
