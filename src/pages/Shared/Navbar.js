@@ -18,7 +18,7 @@ const Navbar = () => {
                             <li><Link>Item 3</Link></li>
                         </ul>
                     </div>
-                    <Link className="font-semibold normal-case text-2xl">WareHouse</Link>
+                    <Link className="font-semibold normal-case text-2xl" to='/'>WareHouse</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
