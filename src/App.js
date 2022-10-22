@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import './App.css';
-import Home from './pages/Home/Home';
+import PageRoutes from './PageRoutes';
 
 export const ThemeContext = createContext(null);
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className='app' id={theme}>
-        <Home></Home>
+        <PageRoutes></PageRoutes>
       </div>
     </ThemeContext.Provider>
   );
