@@ -83,3 +83,20 @@
 #light .textHoverColor2:hover{
     color: #0F172A;
 }
+
+/* Swiper slider */
+
+#light .swiper-pagination-bullet {
+    opacity: .9 !important;
+    background: #0B1221 !important;
+}
+
+#dark .swiper-pagination-bullet {
+    opacity: .9 !important;
+    background: #F5F8FB !important;
+}
+
+#light .swiper-pagination-bullet-active, #dark .swiper-pagination-bullet-active {
+    opacity:  .9 !important;
+    background: rgb(157 23 77) !important;
+}

@@ -17,7 +17,7 @@ const HeroSection = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper bgBodyPrimary"
       >
         <SwiperSlide>
           <Slide></Slide>
