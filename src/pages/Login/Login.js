@@ -2,8 +2,8 @@ import React from 'react';
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 import LoginPic from '../../assets/login.png';
-import Google from '../../assets/google.png';
 import { Link } from 'react-router-dom';
+import SocialLogin from './SocialLogin'
 
 const Login = () => {
 
@@ -19,7 +19,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className='w-full md:w-3/4 mx-auto flex items-center'>
-                            <div className="card flex-shrink-0 w-full shadow-2xl cardBgPrimary">
+                            <form  className="card flex-shrink-0 w-full shadow-2xl cardBgPrimary">
                                 <div className="card-body px-5 md:px-8">
                                     <h2 className='text-center font-semibold text-2xl py-1 textHeading'>Log in to WareHouse</h2>
                                     <div className="form-control">
@@ -53,16 +53,9 @@ const Login = () => {
                                             <div className='border-b-2 w-2/5 border-slate-400'></div>
                                         </div>
                                     </div>
-                                    <div className='my-3 flex'>
-                                        <Link className='w-full h-14 p-1 textHoverColor textHeading'>
-                                            <span className="w-full h-14 rounded-md flex items-center justify-center cursor-pointer  hover:bg-slate-200 border border-slate-600 ">
-                                                <img className='w-10 h-10' src={Google} alt="Google" />
-                                                <h2 className='ml-3 font-semibold text-lg '>Sign up With Google</h2>
-                                            </span>
-                                        </Link>
-                                    </div>
+                                    <SocialLogin></SocialLogin>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

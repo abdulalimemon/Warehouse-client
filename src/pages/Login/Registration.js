@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 import LoginPic from '../../assets/login.png';
 import Google from '../../assets/google.png';
 import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+// import { useUpdateProfile } from 'react-firebase-hooks/auth';
+
 
 const Registration = () => {
+    const nameRef = useRef('');
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const confirmPasswordRef = useRef('');
+    // const [updateProfile, updating, profileError] = useUpdateProfile(auth);
+    const [createUserWithEmailAndPassword, user, loading, error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const confirmPassword = confirmPasswordRef.current.value;
+
+        await createUserWithEmailAndPassword(email, password);
+        alert('An user verification email has been sent to your email address. Please check your inbox or spam folder.');
+        // await updateProfile({ displayName: name });
+    }
+
     return (
         <>
             <Navbar></Navbar>
@@ -18,32 +42,32 @@ const Registration = () => {
                             </div>
                         </div>
                         <div className='w-full md:w-3/4 mx-auto flex items-center'>
-                            <div className="card flex-shrink-0 w-full shadow-2xl cardBgPrimary">
+                            <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full shadow-2xl cardBgPrimary">
                                 <div className="card-body px-5 md:px-8">
                                     <h2 className='text-center font-semibold text-2xl py-1 textHeading'>Create a new account</h2>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Your name</span>
                                         </label>
-                                        <input type="text" placeholder="Enter your name" className="input input-bordered text-lg" />
+                                        <input ref={nameRef} type="text" placeholder="Enter your name" className="input input-bordered text-lg" />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Email address</span>
                                         </label>
-                                        <input type="email" placeholder="Enter your email address" className="input input-bordered text-lg" />
+                                        <input ref={emailRef} type="email" placeholder="Enter your email address" className="input input-bordered text-lg" />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Password</span>
                                         </label>
-                                        <input type="text" placeholder="Enter your password" className="input input-bordered text-lg" />
+                                        <input ref={passwordRef} type="text" placeholder="Enter your password" className="input input-bordered text-lg" />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Confirm password</span>
                                         </label>
-                                        <input type="text" placeholder="Enter your password" className="input input-bordered text-lg" />
+                                        <input ref={confirmPasswordRef} type="text" placeholder="Enter your password" className="input input-bordered text-lg" />
                                     </div>
                                     <div className="form-control">
                                         <label className='label justify-start font-medium text-base'>
@@ -77,7 +101,7 @@ const Registration = () => {
                                     </div>
                                 </div>
 
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
