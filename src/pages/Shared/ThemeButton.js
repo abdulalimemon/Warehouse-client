@@ -7,10 +7,10 @@ const ThemeButton = () => {
     return (
         <div className='flex justify-between items-center'>
             <div>
-                <h2>Dark Mode</h2>
+                <h2 className='textHeading text-base font-semibold'>Dark Mode</h2>
             </div>
-            <div className='flex justify-between items-center'>
-                <label className='mr-3'>{theme === 'light' ? 'Off' : 'On'}</label>
+            <div className='flex justify-between items-center textHeading text-base font-semibold'>
+                <label className='mr-3 textHeading text-base font-semibold'>{theme === 'light' ? 'Off' : 'On'}</label>
                 <ReactSwitch onChange={toggleTheme} checked={theme === 'dark'} height={20}></ReactSwitch>
             </div>
 

@@ -5,7 +5,7 @@ import PageRoutes from './PageRoutes';
 export const ThemeContext = createContext(null);
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'));
   };
