@@ -23,7 +23,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 hover:bg">
-                        <li><Link className='textHeading text-lg font-semibold'>Blog</Link></li>
+                        <li><Link className='textHeading text-lg font-semibold' to='/blog'>Blog</Link></li>
                         <li><Link className='textHeading text-lg font-semibold'>Item 3</Link></li>
                     </ul>
                 </div>
@@ -31,7 +31,7 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar border-2 border-green-500  hover:border-green-700" >
                             <div className="w-10 rounded-full" onClick={() => setProfileOpen(!profileOpen)}>
-                                <img src="https://placeimg.com/80/80/people" />
+                                <img src="https://placeimg.com/80/80/people" alt='' />
                             </div>
                         </label>
                         <ul tabIndex={0} className={`mt-3 p-2 shadow menu menu-compact dropdown-content bgNav rounded-box ${profileOpen ? 'w-72' : 'hidden'}`}>

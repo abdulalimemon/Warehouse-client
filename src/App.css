@@ -14,14 +14,15 @@
 }
 
 #light .bgBodySecondary{
-    background-color: #FCF9FE;
+    background-color: #f8f6f9;
 }
 #dark .bgBodySecondary{
-    background-color: #0F172A;
+    background-color: #060910;
+    opacity: .99;
 }
 
 #light .cardBgPrimary{
-    background-color: #F8FAFC;
+    background-color: #f8fdff;
 }
 #dark .cardBgPrimary{
     background-color: #182233;
