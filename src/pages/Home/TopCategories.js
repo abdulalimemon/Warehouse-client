@@ -3,7 +3,7 @@ import React from 'react';
 const TopCategories = () => {
     return (
         <div className='bgBodySecondary'>
-            <div className='container mx-auto py-8 lg:py-16 '>
+            <div className='container mx-auto pt-8 pb-16 lg:pt-16 lg:pb-20'>
                 <div className='text-center pt-3 pb-10 md:pb-16'>
                     <h2 className='textHeading text-3xl font-bold'>Featured Category</h2>
                 </div>
