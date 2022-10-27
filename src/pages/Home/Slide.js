@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Slide = ({slide}) => {
-    const { id, name, img } = slide; 
+    const { name, img } = slide; 
     return (
         <>
             <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
