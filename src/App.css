@@ -29,10 +29,10 @@
 }
 
 #light .cardBgSecondary{
-    background-color: #ffffff;
+    background-color: #CCCCCC;
 }
 #dark .cardBgSecondary{
-    background-color: #0F172A;
+    background-color: #070c18d9;
 }
 
 #light .borderColor{
@@ -98,6 +98,5 @@
 }
 
 #light .swiper-pagination-bullet-active, #dark .swiper-pagination-bullet-active {
-    opacity:  .9 !important;
-    background: rgb(157 23 77) !important;
+    background: #570DF8 !important;
 }

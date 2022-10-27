@@ -8,7 +8,7 @@ const TopCategories = () => {
                     <h2 className='textHeading text-3xl font-bold'>Featured Category</h2>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    <div className="card w-11/12 bg-base-100 shadow-xl mx-auto p-5 cardBgPrimary">
+                    <div className="card w-11/12 shadow-xl mx-auto p-5 cardBgPrimary">
                         <div className="items-center text-center pb-5 pt-2">
                             <h2 className="text-center text-2xl font-semibold pb-2 textHeading">Shoes!</h2>
                             <p className='text-md textHeading'>If a dog chews shoes whose shoes does he choose?</p>
