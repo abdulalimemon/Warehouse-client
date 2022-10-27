@@ -5,10 +5,29 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import './Home.css';
 import Slide from "./Slide";
+import Img1 from '../../assets/microsoft.png';
+
 
 const HeroSection = () => {
+  const sliderData = [
+    {
+      "id": 1,
+      "name": "Online Consultations",
+      "img": Img1
+    },
+    {
+      "id": 2,
+      "name": "Online Consultations",
+      "img": Img1
+    },
+    {
+      "id": 3,
+      "name": "Online Consultations",
+      "img": Img1
+    }
+  ]
   return (
-    <>
+    <div className="bgBodyPrimary py-10">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -17,19 +36,19 @@ const HeroSection = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper bgBodyPrimary"
+        className="mySwiper container"
       >
-        <SwiperSlide>
-          <Slide></Slide>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Slide></Slide>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Slide></Slide>
-        </SwiperSlide>
+        <div>
+          {
+            sliderData.map(slide => <>
+              <SwiperSlide>
+                <Slide key={slide.id} slide={slide}></Slide>
+              </SwiperSlide>
+            </>)
+          }
+        </div>
       </Swiper>
-    </>
+    </div>
   );
 };
 

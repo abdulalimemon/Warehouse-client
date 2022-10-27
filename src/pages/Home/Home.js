@@ -5,6 +5,7 @@ import HeroSection from './HeroSection';
 import TopCategories from './TopCategories';
 import NewsLetter from './NewsLetter';
 import Inventory from './Inventory';
+import Brand from './Brand';
 
 
 
@@ -15,6 +16,7 @@ const Home = () => {
             <HeroSection></HeroSection>
             <TopCategories></TopCategories>
             <Inventory></Inventory>
+            <Brand></Brand>
             <NewsLetter></NewsLetter>
             <Footer></Footer>
         </div>
