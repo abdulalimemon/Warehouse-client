@@ -1,7 +1,10 @@
 import React from 'react';
+import useInventory from '../../hooks/useInventory';
 import InventoryItem from './InventoryItem';
 
 const Inventory = () => {
+    const [inventorys] = useInventory();
+
     return (
         <div>
             <div className='bgBodyPrimary'>
@@ -11,13 +14,9 @@ const Inventory = () => {
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10'>
 
-
-                        <InventoryItem></InventoryItem>
-                        <InventoryItem></InventoryItem>
-                        <InventoryItem></InventoryItem>
-                        <InventoryItem></InventoryItem>
-                        <InventoryItem></InventoryItem>
-                        <InventoryItem></InventoryItem>
+                        {
+                            inventorys.slice(0, 6).map(inventory => <InventoryItem inventory={inventory} key={inventory.id}></InventoryItem>)
+                        }
                     </div>
                 </div>
             </div>
