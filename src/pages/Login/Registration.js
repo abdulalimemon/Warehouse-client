@@ -1,12 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 import LoginPic from '../../assets/login.png';
 import Google from '../../assets/google.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-// import { useUpdateProfile } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import Loading from '../Shared/Loading';
+
 
 
 const Registration = () => {
@@ -14,10 +16,15 @@ const Registration = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const confirmPasswordRef = useRef('');
-    // const [updateProfile, updating, profileError] = useUpdateProfile(auth);
-    const [createUserWithEmailAndPassword, user, loading, error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [agree, setAgree] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
+    const [createUserWithEmailAndPassword, user, loading, error,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         const name = nameRef.current.value;
@@ -25,11 +32,21 @@ const Registration = () => {
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
 
+        if (password !== confirmPassword) {
+            toast.error('Your password & confirm password did not match, try again.')
+            return;
+        }
         await createUserWithEmailAndPassword(email, password);
-        alert('An user verification email has been sent to your email address. Please check your inbox or spam folder.');
-        // await updateProfile({ displayName: name });
-    }
+        toast.success('An user verification email has been sent to your email address. Please check your inbox or spam folder.');
 
+    }
+    if (user) {
+        navigate(from, { replace: true });
+    }
+    if (loading) {
+        return <Loading></Loading>
+    }
+    
     return (
         <>
             <Navbar></Navbar>
@@ -49,34 +66,34 @@ const Registration = () => {
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Your name</span>
                                         </label>
-                                        <input ref={nameRef} type="text" placeholder="Enter your name" className="input input-bordered text-lg" />
+                                        <input ref={nameRef} type="text" placeholder="Enter your name" className="input input-bordered text-lg" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Email address</span>
                                         </label>
-                                        <input ref={emailRef} type="email" placeholder="Enter your email address" className="input input-bordered text-lg" />
+                                        <input ref={emailRef} type="email" placeholder="Enter your email address" className="input input-bordered text-lg" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Password</span>
                                         </label>
-                                        <input ref={passwordRef} type="text" placeholder="Enter your password" className="input input-bordered text-lg" />
+                                        <input ref={passwordRef} type="password" placeholder="Enter your password" className="input input-bordered text-lg" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Confirm password</span>
                                         </label>
-                                        <input ref={confirmPasswordRef} type="text" placeholder="Enter your password" className="input input-bordered text-lg" />
+                                        <input ref={confirmPasswordRef} type="password" placeholder="Enter your password" className="input input-bordered text-lg" required />
                                     </div>
                                     <div className="form-control">
-                                        <label className='label justify-start font-medium text-base'>
-                                            <input className='mr-3 checkbox checkbox-sm checkbox-accent' type="checkbox" />
-                                            <span className='textHeading'>I agree to the Terms & Conditions</span>
+                                        <label className={`label justify-start font-medium text-base ${agree ? 'text-green-600' : 'textHeading'}`} >
+                                            <input onClick={() => setAgree(!agree)} className='mr-3 checkbox checkbox-sm checkbox-accent' type="checkbox" />
+                                            <span>I agree to the Terms & Conditions</span>
                                         </label>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <button className="btn btn-primary font-medium text-lg capitalize">Register</button>
+                                        <button className={`btn btn-primary font-medium text-lg capitalize ${agree ? '' : 'btn-disabled text-slate-500'}`}>Register</button>
                                     </div>
                                     <label className="label">
                                         <p className='font-medium text-base textHeading'>Already have an account?

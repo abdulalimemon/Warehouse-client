@@ -1,13 +1,19 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import ThemeButton from './ThemeButton';
 
+
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
     const [user] = useAuthState(auth);
+
+    const usersignOut = () => {
+        signOut(auth);
+    };
 
     return (
         <div className='bgNav'>
@@ -38,7 +44,9 @@ const Navbar = () => {
                                     </li>
                                     <li><Link className='textHeading text-base font-semibold'>Settings</Link></li>
                                     <li><ThemeButton></ThemeButton></li>
-                                    <li><Link className='textHeading  font-semibold' to='/login'><button className='btn btn-primary capitalize w-full text-base'>Logout</button></Link>
+                                    <li><Link className='textHeading  font-semibold'><button className='btn btn-primary capitalize w-full text-base' onClick={() => {
+                                        usersignOut()
+                                    }}>Logout</button></Link>
                                     </li>
                                 </ul>
                             </div>

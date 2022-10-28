@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Registration from './pages/Login/Registration';
 import NotFound from './pages/NotFound/NotFound';
+import Loading from './pages/Shared/Loading';
 
 const PageRoutes = () => {
     return (
@@ -14,6 +15,7 @@ const PageRoutes = () => {
                 <Route path='/' element={<Home></Home>}></Route>
                 <Route path='/home' element={<Home></Home>}></Route>
                 {/* <Route path='/' element={}></Route> */}
+                <Route path='/load' element={<Loading></Loading>}></Route>
                 <Route path='/dashboard' element={<DashBoard></DashBoard>}></Route>
                 <Route path='/login' element={<Login></Login>}></Route>
                 <Route path='/registration' element={<Registration></Registration>}></Route>
