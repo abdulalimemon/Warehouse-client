@@ -33,11 +33,15 @@ const Registration = () => {
         const confirmPassword = confirmPasswordRef.current.value;
 
         if (password !== confirmPassword) {
-            toast.error('Your password & confirm password did not match, try again.')
+            toast.error('Your password & confirm password did not match, try again.', {
+                theme: "colored",
+            })
             return;
         }
         await createUserWithEmailAndPassword(email, password);
-        toast.success('An user verification email has been sent to your email address. Please check your inbox or spam folder.');
+        toast.success('An user verification email has been sent to your email address. Please check your inbox or spam folder.', {
+            theme: "colored",
+        });
 
     }
     if (user) {

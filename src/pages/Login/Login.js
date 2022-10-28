@@ -1,11 +1,62 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 import LoginPic from '../../assets/login.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        signInWithEmailAndPassword(email, password)
+    }
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+
+    if (error?.message === 'Firebase: Error (auth/wrong-password).') {
+        toast.error('Wrong password', {
+            theme: "colored",
+        })
+    }else if (error?.message === 'Firebase: Error (auth/user-not-found).') {
+        toast.error('User Not Found', {
+            theme: "colored",
+        })
+    }else if (error?.message === 'Firebase: Error (auth/invalid-email).') {
+        toast.error('Invalid Email', {
+            theme: "colored",
+        })
+    } else{
+        toast.error(error?.message, {
+            theme: "colored",
+        }) 
+    }
 
     return (
         <>
@@ -19,20 +70,20 @@ const Login = () => {
                             </div>
                         </div>
                         <div className='w-full md:w-3/4 mx-auto flex items-center'>
-                            <form  className="card flex-shrink-0 w-full shadow-2xl cardBgPrimary">
+                            <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full shadow-2xl cardBgPrimary">
                                 <div className="card-body px-5 md:px-8">
                                     <h2 className='text-center font-semibold text-2xl py-1 textHeading'>Log in to WareHouse</h2>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Email Address</span>
                                         </label>
-                                        <input type="text" placeholder="email" className="input input-bordered text-lg" />
+                                        <input ref={emailRef} type="text" placeholder="email" className="input input-bordered text-lg" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg textHeading">Password</span>
                                         </label>
-                                        <input type="text" placeholder="password" className="input input-bordered text-lg" />
+                                        <input ref={passwordRef} type="password" placeholder="password" className="input input-bordered text-lg" required />
                                         <label className="label">
                                             <Link to='/Forgotpassword' className=" font-medium text-base text-red-700 textHoverColor2">Forgot password?</Link>
                                         </label>
