@@ -9,6 +9,7 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
 
+
 const Login = () => {
 
     const emailRef = useRef('');
@@ -24,38 +25,48 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        signInWithEmailAndPassword(email, password)
-    }
+        await signInWithEmailAndPassword(email, password);
 
+    }
+    // Error Message
+    const errorCheck = () => {
+
+        if (error?.message === 'Firebase: Error (auth/wrong-password).') {
+            toast.error('Wrong password', {
+                theme: "colored",
+            })
+            return;
+        }
+        if (error?.message === 'Firebase: Error (auth/user-not-found).') {
+            toast.error('User Not Found', {
+                theme: "colored",
+            })
+            return;
+        }
+        if (error?.message === 'Firebase: Error (auth/invalid-email).') {
+            toast.error('Invalid Email', {
+                theme: "colored",
+            })
+            return;
+        }
+        if (error?.message) {
+            toast.error(error?.message, {
+                theme: "colored",
+            })
+            return;
+        }
+    }
+    errorCheck();
     if (user) {
         navigate(from, { replace: true });
     }
 
     if (loading) {
         return <Loading></Loading>
-    }
-
-
-    if (error?.message === 'Firebase: Error (auth/wrong-password).') {
-        toast.error('Wrong password', {
-            theme: "colored",
-        })
-    }else if (error?.message === 'Firebase: Error (auth/user-not-found).') {
-        toast.error('User Not Found', {
-            theme: "colored",
-        })
-    }else if (error?.message === 'Firebase: Error (auth/invalid-email).') {
-        toast.error('Invalid Email', {
-            theme: "colored",
-        })
-    } else{
-        toast.error(error?.message, {
-            theme: "colored",
-        }) 
     }
 
     return (
