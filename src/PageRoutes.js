@@ -3,8 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Blog from './pages/Blog/Blog';
 import DashBoard from './pages/DashBoard/DashBoard';
 import Home from './pages/Home/Home';
+import ForgotPassword from './pages/Login/ForgotPassword';
 import Login from './pages/Login/Login';
 import Registration from './pages/Login/Registration';
+import RequireAuth from './pages/Login/RequireAuth';
 import NotFound from './pages/NotFound/NotFound';
 
 const PageRoutes = () => {
@@ -14,7 +16,11 @@ const PageRoutes = () => {
                 <Route path='/' element={<Home></Home>}></Route>
                 <Route path='/home' element={<Home></Home>}></Route>
                 {/* <Route path='/' element={}></Route> */}
-                <Route path='/dashboard' element={<DashBoard></DashBoard>}></Route>
+                <Route path='/forgotpassword' element={<ForgotPassword></ForgotPassword>}></Route>
+
+                <Route path='/dashboard' element={<RequireAuth>
+                    <DashBoard></DashBoard>
+                </RequireAuth>}></Route>
                 <Route path='/login' element={<Login></Login>}></Route>
                 <Route path='/registration' element={<Registration></Registration>}></Route>
                 <Route path='/blog' element={<Blog></Blog>}></Route>
