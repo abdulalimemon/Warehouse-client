@@ -6,14 +6,12 @@ import TopCategories from './TopCategories';
 import NewsLetter from './NewsLetter';
 import Inventory from './Inventory';
 import Brand from './Brand';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
+
 
 
 
 const Home = () => {
-    const [user] = useAuthState(auth);
-    console.log(user);
+    
     return (
         <div>
             <Navbar></Navbar>

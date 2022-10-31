@@ -17,8 +17,15 @@
     background-color: #f8f6f9;
 }
 #dark .bgBodySecondary{
-    background-color: #060910;
-    opacity: .99;
+    background-color: #090A27;
+}
+
+#light .bgBrand{
+    background-color: #f8f6f9;
+}
+#dark .bgBrand{
+    background-color: #090A27;
+    opacity: 1;
 }
 
 #light .cardBgPrimary{

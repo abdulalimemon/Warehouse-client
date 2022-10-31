@@ -1,8 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const InventoryItem = ({ inventory }) => {
-    const { name, price, description, quantity, img, supplierName } = inventory;
+    const {_id, name, price, description, quantity, img, supplierName } = inventory;
+    const navigate = useNavigate();
+
+    const navigateToInventoryDetail = _id => {
+        navigate(`/inventory/${_id}`);
+    }
+
+    
+
     return (
         <div className="card w-11/12 md:w-12/12 shadow-xl mx-auto cardBgPrimary rounded-md">
             <figure className='w-full'>
@@ -20,7 +28,7 @@ const InventoryItem = ({ inventory }) => {
                 <p className="text-md font-semibold textHeading">Supplier name : {supplierName}</p>
             </div>
             <div className="w-full">
-                <Link className='w-full h-14 rounded-t-none rounded-b-md flex items-center justify-center cursor-pointer btn btn-primary font-medium text-lg capitalize' to=''>Stock Update</Link>
+                <button className='w-full h-14 rounded-t-none rounded-b-md flex items-center justify-center cursor-pointer btn btn-primary font-medium text-lg capitalize' onClick={()=> navigateToInventoryDetail(_id)}>Stock Update</button>
             </div>
         </div>
     );

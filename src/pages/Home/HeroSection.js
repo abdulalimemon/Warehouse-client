@@ -5,23 +5,26 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import './Home.css';
 import Slide from "./Slide";
-import Img1 from '../../assets/microsoft.png';
+import Img1 from '../../assets/avatar.png';
 
 
 const HeroSection = () => {
   const sliderData = [
     {
-      "id": 1,
+      "id": 11,
+      "key": 111,
       "name": "Online Consultations",
       "img": Img1
     },
     {
-      "id": 2,
+      "id": 12,
+      "key": 112,
       "name": "Online Consultations",
       "img": Img1
     },
     {
-      "id": 3,
+      "id": 13,
+      "key": 113,
       "name": "Online Consultations",
       "img": Img1
     }
@@ -41,7 +44,7 @@ const HeroSection = () => {
         <div>
           {
             sliderData.map(slide => <>
-              <SwiperSlide>
+              <SwiperSlide key={slide.key}>
                 <Slide key={slide.id} slide={slide}></Slide>
               </SwiperSlide>
             </>)

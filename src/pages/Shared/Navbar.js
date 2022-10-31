@@ -24,7 +24,10 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 hover:bg">
                         <li><Link className='textHeading text-lg font-semibold' to='/blog'>Blog</Link></li>
-                        <li><Link className='textHeading text-lg font-semibold'>Item 3</Link></li>
+                        {
+                            user && <li><Link className='textHeading text-lg font-semibold' to='/manageinventory'>Manage Inventory</Link></li>
+                        }
+
                     </ul>
                 </div>
                 {
@@ -60,7 +63,7 @@ const Navbar = () => {
                                     </label>
                                     <ul tabIndex={0} className={`menu menu-compact dropdown-content mt-3 p-2 shadow bgNav rounded-box ${menuOpen ? 'w-72' : 'hidden'}`}>
                                         <li className='flex items-center'><Link to='/blog' className='textHeading text-base font-semibold'>Blog</Link></li>
-                                        <li className='flex items-center'><Link className='textHeading text-base font-semibold'>Item 3</Link></li>
+                                        <li><Link className='textHeading text-lg font-semibold' to='/manageinventory'>Manage Inventory</Link></li>
                                         <li><Link className='textHeading font-semibold' to='/login'><button className='btn btn-primary capitalize w-full text-base'>Login</button></Link>
                                         </li>
                                         <li><Link className='textHeading font-semibold' to='/registration'><button className='btn btn-primary capitalize w-full text-base'>Registration</button></Link>
