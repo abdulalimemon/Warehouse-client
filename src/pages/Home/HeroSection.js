@@ -5,32 +5,34 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import './Home.css';
 import Slide from "./Slide";
-import Img1 from '../../assets/avatar.png';
+import i9 from '../../assets/i9.png';
+import apple from '../../assets/apple.png';
+import gcard from '../../assets/gcard.png';
 
 
 const HeroSection = () => {
   const sliderData = [
     {
       "id": 11,
-      "key": 111,
-      "name": "Online Consultations",
-      "img": Img1
+      "title": "13th Gen",
+      "subTitle":"Intel Core i9 desktop Processors",
+      "img": i9
     },
     {
       "id": 12,
-      "key": 112,
-      "name": "Online Consultations",
-      "img": Img1
+      "title": "Apple MacBook Pro",
+      "subTitle":"Apple M1 Pro Chip Silver Laptop",
+      "img": apple
     },
     {
       "id": 13,
-      "key": 113,
-      "name": "Online Consultations",
-      "img": Img1
+      "title": "Zotac Gaming GeForce GTX 1650",
+      "subTitle":"4GB GDDR6 Graphics Card",
+      "img": gcard
     }
   ]
   return (
-    <div className="bgBodyPrimary py-10">
+    <div className="bgBodyPrimary pb-10 pt-0 md:pt-10">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -44,8 +46,8 @@ const HeroSection = () => {
         <div>
           {
             sliderData.map(slide => <>
-              <SwiperSlide key={slide.key}>
-                <Slide key={slide.id} slide={slide}></Slide>
+              <SwiperSlide key={slide.id}>
+                <Slide slide={slide}></Slide>
               </SwiperSlide>
             </>)
           }
