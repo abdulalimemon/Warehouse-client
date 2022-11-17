@@ -4,7 +4,7 @@ const useInventoryItem = (InventoryId) => {
     const [inventory, setInventory] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${InventoryId}`
+        const url = `https://warehouse-management-app.onrender.com/inventory/${InventoryId}`
         fetch(url)
             .then(res => res.json())
             .then(data => setInventory(data));

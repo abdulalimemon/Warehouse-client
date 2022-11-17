@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 
 const useInventory = () => {
     const [inventorys, setInventorys] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inventory')
+        fetch('https://warehouse-management-app.onrender.com/inventory')
             .then(res => res.json())
-            .then(data => setInventorys(data));
+            .then(data => {
+                setInventorys(data);
+                setIsLoading(false);
+            });
     }, [])
-    return [inventorys, setInventorys];
+    return [inventorys, setInventorys, isLoading, setIsLoading];
 };
 
 export default useInventory;

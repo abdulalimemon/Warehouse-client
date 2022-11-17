@@ -11,7 +11,7 @@ const Brand = () => {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:5000/brand';
+        const url = 'https://warehouse-management-app.onrender.com/brand';
         fetch(url)
             .then(res => res.json())
             .then(data => setBrands(data))
