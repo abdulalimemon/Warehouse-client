@@ -59,15 +59,15 @@ const TopCategories = () => {
                 <div className='text-center pt-3 pb-10 md:pb-16'>
                     <h2 className='textHeading text-3xl font-bold'>Featured Category</h2>
                 </div>
-                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4'>
+                <div className='grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-4 px-4'>
                     {
-                        Categories.map(category => <>
+                        Categories.map((category) => <>
                             <div key={category.id} className="card w-11/12 shadow-xl mx-auto p-5 cardBgPrimary">
                                 <div className="items-center text-center pb-5 pt-2">
-                                    <h2 className="text-center text-xl md:text-2xl font-semibold pb-2 textHeading">{category.title}</h2>
+                                    <h2 className="text-center text-lg md:text-xl font-semibold pb-2 textHeading">{category.title}</h2>
                                 </div>
                                 <figure className='md:pt-2'>
-                                    <img src={category.img} alt="Category" className="rounded-md w-16 md:w-28" />
+                                    <img src={category.img} alt="Category" className="rounded-md w-14 lg:w-24" />
                                 </figure>
                             </div>
                         </>)

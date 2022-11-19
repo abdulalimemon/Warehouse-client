@@ -6,15 +6,20 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import { useState } from "react";
 import { useEffect } from "react";
+import BrandLoading from "../Shared/BrandLoading";
 
 const Brand = () => {
     const [brands, setBrands] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const url = 'https://warehouse-management-app.onrender.com/brand';
         fetch(url)
             .then(res => res.json())
-            .then(data => setBrands(data))
+            .then(data => {
+                setBrands(data);
+                setIsLoading(false);
+            })
     }, []);
 
     return (
@@ -32,6 +37,7 @@ const Brand = () => {
                 className="mySwiper container"
             >
                 <div>
+                    {isLoading && <BrandLoading></BrandLoading>}
                     {
                         brands.map(brand => <>
                             <SwiperSlide className="px-0 md:px-10" key={brand._id} >
