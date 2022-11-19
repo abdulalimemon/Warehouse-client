@@ -4,7 +4,7 @@ import Navbar from '../Shared/Navbar';
 import LoginPic from '../../assets/login.png';
 import Google from '../../assets/google.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
@@ -23,8 +23,8 @@ const Registration = () => {
 
     const [createUserWithEmailAndPassword, user, loading, error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    
     const handleSubmit = async (event) => {
         event.preventDefault();
         const name = nameRef.current.value;
@@ -39,6 +39,7 @@ const Registration = () => {
             return;
         }
         await createUserWithEmailAndPassword(email, password);
+        await updateProfile({displayName : name});
         toast.success('An user verification email has been sent to your email address. Please check your inbox or spam folder.', {
             theme: "colored",
         });
@@ -47,10 +48,10 @@ const Registration = () => {
     if (user) {
         navigate(from, { replace: true });
     }
-    if (loading) {
+    if (loading || updating) {
         return <Loading></Loading>
     }
-    
+
     return (
         <>
             <Navbar></Navbar>
